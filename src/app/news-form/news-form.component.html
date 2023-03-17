@@ -1,0 +1,36 @@
+<p>news-form works!</p>
+
+<form [formGroup]="newsForm" (ngSubmit)="processForm()">
+    <table>
+        <tr>
+            <td> 
+                <label>Country</label>
+            </td>
+            <td>
+                <select formControlName="country">
+                    <option value="-1">Please Select</option>
+                    <option *ngFor="let c of COUNTRIES | keyvalue"
+                        [value]="c.key">
+                        {{ c.value }}
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Category</label>
+            </td>
+            <td>
+                <select formControlName="category">
+                    <option value="-1">Please Select</option>
+                    <option
+                    *ngFor="let c of CATEGORIES; let idx = index"
+                    [value]="c">
+                        {{ c }}
+                    </option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <button type="submit">Get News</button>
+</form>
